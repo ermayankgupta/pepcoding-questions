@@ -19,17 +19,22 @@ public class MatrixMultiplication {
                 arr2[i][j] = scn.nextInt();
             }
         }
-        int [][] mul = new int [c1][r2];
-        for(int i=0;i<r1;i++){
-            int val=0;
-            for(int j=0;j<c2;j++){
-                val = val+ (arr1[i][j]*arr2[i][j]);
-                mul[i][j]=val;
+        if (c1 != r2) {
+            System.out.println("Invalid input");
+        }
+        int[][] mul = new int[r1][c2];
+        for (int i = 0; i < mul.length; i++) {
+            for (int j = 0; j < mul[0].length; j++) {
+                int val = 0;
+                for (int k = 0; k < c1; k++) {
+                    val += arr1[i][k] * arr2[k][j];
+                }
+                mul[i][j] = val;
             }
         }
-        for(int i=0;i<r1;i++){
-            for(int j=0;j<c2;j++){
-                System.out.print(mul[i][j]+" ");
+        for (int i = 0; i < r1; i++) {
+            for (int j = 0; j < c2; j++) {
+                System.out.print(mul[i][j] + " ");
             }
             System.out.println();
         }
